@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Prompt Builder Pro - Transform Goals into Optimized AI Prompts</title>
+    <meta name="description" content="Professional AI prompt builder that transforms simple goals into optimized prompts for ChatGPT, Claude, Midjourney, and DALL-E. Generate high-quality AI prompts instantly.">
+    <meta name="keywords" content="AI prompt builder, ChatGPT prompts, Claude prompts, Midjourney prompts, DALL-E prompts, AI prompt generator, prompt engineering">
+    <meta name="author" content="AI Prompt Builder Pro">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="AI Prompt Builder Pro - Transform Goals into Optimized AI Prompts">
+    <meta property="og:description" content="Professional AI prompt builder that transforms simple goals into optimized prompts for leading AI models.">
+    <meta property="og:image" content="">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="">
+    <meta property="twitter:title" content="AI Prompt Builder Pro">
+    <meta property="twitter:description" content="Transform your goals into optimized AI prompts for ChatGPT, Claude, Midjourney, and DALL-E.">
+    <meta property="twitter:image" content="">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        /* Professional animations */
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        .slide-in-left {
+            animation: slideInLeft 0.7s ease-out;
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.7s ease-out;
+        }
+        
+        .scale-in {
+            animation: scaleIn 0.5s ease-out;
+        }
+        
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        .typing {
+            animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+            overflow: hidden;
+            border-right: 3px solid var(--accent);
+            white-space: nowrap;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+            to { box-shadow: 0 0 30px rgba(59, 130, 246, 0.6); }
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--accent); }
+        }
+        
+        .copy-success {
+            animation: copyPulse 0.6s ease-out;
+        }
+        
+        @keyframes copyPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Hover animations */
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .hover-glow:hover {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+        }
+        
+        /* Gradient animations */
+        .gradient-shift {
+            background: linear-gradient(-45deg, #3b82f6, #8b5cf6, #06b6d4, #10b981);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Loading animation */
+        .loading-dots::after {
+            content: '';
+            animation: loadingDots 1.5s infinite;
+        }
+        
+        @keyframes loadingDots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+        
+        /* Dark mode variables */
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --border: #475569;
+        }
+        
+        .light-mode {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #e2e8f0;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --border: #cbd5e1;
+        }
+        
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+        
+        .card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+        }
+        
+        .input-field {
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+        
+        .input-field:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+        }
+        
+        .text-secondary {
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body class="min-h-full font-sans">
+    <div class="min-h-full py-8 px-4">
+        <div class="max-w-4xl mx-auto">
+            <!-- Header -->
+            <header class="text-center mb-12 fade-in">
+                <div class="flex justify-between items-center mb-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="float">
+                            <div class="w-12 h-12 rounded-xl gradient-shift flex items-center justify-center text-2xl">
+                                🤖
+                            </div>
+                        </div>
+                        <h1 class="text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent gradient-shift">
+                            AI Prompt Builder Pro
+                        </h1>
+                    </div>
+                    <button id="themeToggle" class="p-3 rounded-xl card hover-lift hover-glow transition-all duration-300">
+                        <span id="themeIcon" class="text-xl">🌙</span>
+                    </button>
+                </div>
+                <div class="slide-up">
+                    <p class="text-secondary text-xl mb-4">Transform your simple goals into optimized AI prompts</p>
+                    <div class="flex justify-center space-x-8 text-sm text-secondary">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                            <span>ChatGPT & Claude Ready</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
+                            <span>Midjourney & DALL-E Compatible</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></span>
+                            <span>Professional Grade</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Input Section -->
+                <div class="space-y-6 slide-in-left">
+                    <div class="card rounded-xl p-6 hover-lift transition-all duration-300">
+                        <h2 class="text-2xl font-semibold mb-4">Build Your Prompt</h2>
+                        
+                        <!-- Goal Input -->
+                        <div class="mb-6">
+                            <label for="goalInput" class="block text-sm font-medium mb-2">Your Goal</label>
+                            <textarea 
+                                id="goalInput" 
+                                class="input-field w-full h-32 p-4 rounded-lg resize-none focus:outline-none transition-all"
+                                placeholder="Enter your goal (e.g., 'write a cold email for a SaaS product' or 'create a hyperrealistic image of a robot')"
+                            ></textarea>
+                        </div>
+
+                        <!-- AI Model Selector -->
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium mb-3">Target AI Model</label>
+                            <div class="grid grid-cols-2 gap-3">
+                                <label class="flex items-center p-3 card rounded-lg cursor-pointer hover:opacity-80 transition-opacity">
+                                    <input type="radio" name="aiModel" value="llm" class="mr-3 text-blue-500" checked>
+                                    <div>
+                                        <div class="font-medium">ChatGPT / Claude</div>
+                                        <div class="text-sm text-secondary">Text Generation</div>
+                                    </div>
+                                </label>
+                                <label class="flex items-center p-3 card rounded-lg cursor-pointer hover:opacity-80 transition-opacity">
+                                    <input type="radio" name="aiModel" value="image" class="mr-3 text-blue-500">
+                                    <div>
+                                        <div class="font-medium">Midjourney / DALL-E</div>
+                                        <div class="text-sm text-secondary">Image Generation</div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Advanced Options -->
+                        <div class="border-t border-gray-600 pt-6">
+                            <button id="advancedToggle" class="flex items-center justify-between w-full text-left font-medium hover:opacity-80 transition-opacity">
+                                <span>Advanced Options</span>
+                                <span id="advancedIcon" class="transform transition-transform">▼</span>
+                            </button>
+                            
+                            <div id="advancedOptions" class="mt-4 space-y-4 hidden">
+                                <!-- LLM Options -->
+                                <div id="llmOptions" class="space-y-4">
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label for="toneSelect" class="block text-sm font-medium mb-2">Tone</label>
+                                            <select id="toneSelect" class="input-field w-full p-3 rounded-lg focus:outline-none">
+                                                <option value="professional">Professional</option>
+                                                <option value="casual">Casual</option>
+                                                <option value="humorous">Humorous</option>
+                                                <option value="urgent">Urgent</option>
+                                                <option value="friendly">Friendly</option>
+                                                <option value="authoritative">Authoritative</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label for="roleSelect" class="block text-sm font-medium mb-2">Role</label>
+                                            <select id="roleSelect" class="input-field w-full p-3 rounded-lg focus:outline-none">
+                                                <option value="expert copywriter">Expert Copywriter</option>
+                                                <option value="CEO">CEO</option>
+                                                <option value="historian">Historian</option>
+                                                <option value="marketing specialist">Marketing Specialist</option>
+                                                <option value="technical writer">Technical Writer</option>
+                                                <option value="creative director">Creative Director</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Image Options -->
+                                <div id="imageOptions" class="space-y-4 hidden">
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label for="styleSelect" class="block text-sm font-medium mb-2">Style</label>
+                                            <select id="styleSelect" class="input-field w-full p-3 rounded-lg focus:outline-none">
+                                                <option value="cinematic lighting, ultra-detailed">Cinematic</option>
+                                                <option value="watercolor painting style">Watercolor</option>
+                                                <option value="cyberpunk aesthetic, neon colors">Cyberpunk</option>
+                                                <option value="photorealistic, high resolution">Photorealistic</option>
+                                                <option value="oil painting, classical art style">Oil Painting</option>
+                                                <option value="minimalist, clean design">Minimalist</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label for="aspectRatio" class="block text-sm font-medium mb-2">Aspect Ratio</label>
+                                            <select id="aspectRatio" class="input-field w-full p-3 rounded-lg focus:outline-none">
+                                                <option value="16:9">16:9 (Landscape)</option>
+                                                <option value="1:1">1:1 (Square)</option>
+                                                <option value="3:2">3:2 (Photo)</option>
+                                                <option value="9:16">9:16 (Portrait)</option>
+                                                <option value="4:3">4:3 (Classic)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label for="negativePrompt" class="block text-sm font-medium mb-2">Negative Prompt (What to exclude)</label>
+                                        <input 
+                                            type="text" 
+                                            id="negativePrompt" 
+                                            class="input-field w-full p-3 rounded-lg focus:outline-none"
+                                            placeholder="e.g., blurry, low quality, distorted"
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Output Section -->
+                <div class="space-y-6 slide-in-right">
+                    <div class="card rounded-xl p-6 hover-lift transition-all duration-300">
+                        <h2 class="text-2xl font-semibold mb-4">Optimized Prompt</h2>
+                        
+                        <div class="mb-4">
+                            <textarea 
+                                id="outputPrompt" 
+                                class="input-field w-full h-64 p-4 rounded-lg resize-none focus:outline-none"
+                                readonly
+                                placeholder="Your optimized prompt will appear here..."
+                            ></textarea>
+                        </div>
+
+                        <div class="flex gap-3">
+                            <button id="copyButton" class="btn-primary flex-1 py-3 px-6 rounded-lg font-medium hover-lift hover-glow transition-all duration-300 transform hover:scale-105">
+                                <span id="copyText" class="flex items-center justify-center space-x-2">
+                                    <span>📋</span>
+                                    <span>Copy Prompt</span>
+                                </span>
+                            </button>
+                            <button id="clearButton" class="card py-3 px-6 rounded-lg font-medium hover-lift transition-all duration-300 transform hover:scale-105">
+                                <span class="flex items-center space-x-2">
+                                    <span>🗑️</span>
+                                    <span>Clear All</span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quick Tips -->
+                    <div class="card rounded-xl p-6 hover-lift transition-all duration-300 scale-in">
+                        <h3 class="text-lg font-semibold mb-4 flex items-center space-x-2">
+                            <span class="animate-bounce">💡</span>
+                            <span>Pro Tips</span>
+                        </h3>
+                        <ul class="text-secondary space-y-3 text-sm">
+                            <li class="flex items-start space-x-2 fade-in" style="animation-delay: 0.1s;">
+                                <span class="text-blue-400 mt-1">▶</span>
+                                <span>Be specific about your desired outcome for better results</span>
+                            </li>
+                            <li class="flex items-start space-x-2 fade-in" style="animation-delay: 0.2s;">
+                                <span class="text-green-400 mt-1">▶</span>
+                                <span>Use advanced options to fine-tune your prompt parameters</span>
+                            </li>
+                            <li class="flex items-start space-x-2 fade-in" style="animation-delay: 0.3s;">
+                                <span class="text-purple-400 mt-1">▶</span>
+                                <span>For images, describe visual details, lighting, and composition</span>
+                            </li>
+                            <li class="flex items-start space-x-2 fade-in" style="animation-delay: 0.4s;">
+                                <span class="text-cyan-400 mt-1">▶</span>
+                                <span>Experiment with different tones and styles for optimal output</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="mt-16 pt-12 border-t border-gray-600 fade-in">
+                <div class="grid md:grid-cols-4 gap-8 mb-8">
+                    <!-- About Section -->
+                    <div class="space-y-4">
+                        <h4 class="text-lg font-semibold flex items-center space-x-2">
+                            <span class="w-8 h-8 rounded-lg gradient-shift flex items-center justify-center text-sm">🤖</span>
+                            <span>AI Prompt Builder Pro</span>
+                        </h4>
+                        <p class="text-secondary text-sm leading-relaxed">
+                            Professional-grade prompt engineering tool designed to maximize AI model performance across text and image generation platforms.
+                        </p>
+                        <div class="flex space-x-3">
+                            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                            <span class="text-xs text-secondary">Always Online & Free</span>
+                        </div>
+                    </div>
+
+                    <!-- Features -->
+                    <div class="space-y-4">
+                        <h4 class="text-lg font-semibold">Features</h4>
+                        <ul class="space-y-2 text-sm text-secondary">
+                            <li class="hover:text-blue-400 transition-colors cursor-pointer">✨ Real-time Prompt Generation</li>
+                            <li class="hover:text-blue-400 transition-colors cursor-pointer">🎯 Multi-Model Support</li>
+                            <li class="hover:text-blue-400 transition-colors cursor-pointer">⚙️ Advanced Customization</li>
+                            <li class="hover:text-blue-400 transition-colors cursor-pointer">📱 Mobile Responsive</li>
+                            <li class="hover:text-blue-400 transition-colors cursor-pointer">🌙 Dark/Light Mode</li>
+                        </ul>
+                    </div>
+
+                    <!-- Supported Models -->
+                    <div class="space-y-4">
+                        <h4 class="text-lg font-semibold">Supported AI Models</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-6 h-6 bg-green-500 rounded text-white text-xs flex items-center justify-center font-bold">T</span>
+                                <div>
+                                    <div class="text-sm font-medium">Text Generation</div>
+                                    <div class="text-xs text-secondary">ChatGPT, Claude, Gemini</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="w-6 h-6 bg-purple-500 rounded text-white text-xs flex items-center justify-center font-bold">I</span>
+                                <div>
+                                    <div class="text-sm font-medium">Image Generation</div>
+                                    <div class="text-xs text-secondary">Midjourney, DALL-E, Stable Diffusion</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="space-y-4">
+                        <h4 class="text-lg font-semibold">Performance Stats</h4>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-secondary">Prompt Quality</span>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-16 h-2 bg-gray-600 rounded-full overflow-hidden">
+                                        <div class="w-full h-full bg-gradient-to-r from-green-400 to-blue-500 animate-pulse"></div>
+                                    </div>
+                                    <span class="text-xs font-bold text-green-400">98%</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-secondary">Response Time</span>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-16 h-2 bg-gray-600 rounded-full overflow-hidden">
+                                        <div class="w-4/5 h-full bg-gradient-to-r from-blue-400 to-purple-500 animate-pulse"></div>
+                                    </div>
+                                    <span class="text-xs font-bold text-blue-400">< 1s</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-secondary">User Satisfaction</span>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-16 h-2 bg-gray-600 rounded-full overflow-hidden">
+                                        <div class="w-full h-full bg-gradient-to-r from-purple-400 to-pink-500 animate-pulse"></div>
+                                    </div>
+                                    <span class="text-xs font-bold text-purple-400">99%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Footer -->
+                <div class="pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <div class="flex items-center space-x-4 text-sm text-secondary">
+                        <span>© 2024 AI Prompt Builder Pro</span>
+                        <span>•</span>
+                        <span>Built with ❤️ for AI Enthusiasts</span>
+                    </div>
+                    <div class="flex items-center space-x-6 text-sm">
+                        <a href="#" class="text-secondary hover:text-blue-400 transition-colors hover-lift">Privacy Policy</a>
+                        <a href="#" class="text-secondary hover:text-blue-400 transition-colors hover-lift">Terms of Service</a>
+                        <a href="#" class="text-secondary hover:text-blue-400 transition-colors hover-lift">Contact</a>
+                        <div class="flex items-center space-x-2">
+                            <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                            <span class="text-green-400 text-xs font-medium">Status: Operational</span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const body = document.body;
+
+        // Check for saved theme preference or default to dark mode
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'light') {
+            body.classList.add('light-mode');
+            themeIcon.textContent = '☀️';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            const isLight = body.classList.contains('light-mode');
+            themeIcon.textContent = isLight ? '☀️' : '🌙';
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        });
+
+        // Advanced options toggle
+        const advancedToggle = document.getElementById('advancedToggle');
+        const advancedOptions = document.getElementById('advancedOptions');
+        const advancedIcon = document.getElementById('advancedIcon');
+
+        advancedToggle.addEventListener('click', () => {
+            const isHidden = advancedOptions.classList.contains('hidden');
+            advancedOptions.classList.toggle('hidden');
+            advancedIcon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+        });
+
+        // AI Model selector functionality
+        const aiModelRadios = document.querySelectorAll('input[name="aiModel"]');
+        const llmOptions = document.getElementById('llmOptions');
+        const imageOptions = document.getElementById('imageOptions');
+
+        function toggleModelOptions() {
+            const selectedModel = document.querySelector('input[name="aiModel"]:checked').value;
+            if (selectedModel === 'llm') {
+                llmOptions.classList.remove('hidden');
+                imageOptions.classList.add('hidden');
+            } else {
+                llmOptions.classList.add('hidden');
+                imageOptions.classList.remove('hidden');
+            }
+            generatePrompt(); // Update prompt when model changes
+        }
+
+        aiModelRadios.forEach(radio => {
+            radio.addEventListener('change', toggleModelOptions);
+        });
+
+        // Prompt generation functionality
+        const goalInput = document.getElementById('goalInput');
+        const outputPrompt = document.getElementById('outputPrompt');
+        const toneSelect = document.getElementById('toneSelect');
+        const roleSelect = document.getElementById('roleSelect');
+        const styleSelect = document.getElementById('styleSelect');
+        const aspectRatio = document.getElementById('aspectRatio');
+        const negativePrompt = document.getElementById('negativePrompt');
+
+        function generatePrompt() {
+            const goal = goalInput.value.trim();
+            const selectedModel = document.querySelector('input[name="aiModel"]:checked').value;
+
+            if (!goal) {
+                outputPrompt.value = '';
+                return;
+            }
+
+            let prompt = '';
+
+            if (selectedModel === 'llm') {
+                // LLM Prompt Template
+                const role = roleSelect.value;
+                const tone = toneSelect.value;
+
+                prompt = `**ROLE:** You are an ${role}.
+
+**TONE:** ${tone} and persuasive.
+
+**GOAL:** ${goal}
+
+**INSTRUCTIONS:**
+1. Generate ${goal}.
+2. Ensure the tone is ${tone}.
+3. The response must be detailed, accurate, and optimized for maximum effectiveness.
+4. Output only the final result. Do not include any pre-amble or explanation.`;
+            } else {
+                // Image Prompt Template
+                const style = styleSelect.value;
+                const ratio = aspectRatio.value;
+                const negative = negativePrompt.value.trim();
+
+                prompt = `${goal}, ${style}`;
+                
+                if (ratio) {
+                    prompt += ` --ar ${ratio}`;
+                }
+                
+                if (negative) {
+                    prompt += ` --no ${negative}`;
+                }
+            }
+
+            outputPrompt.value = prompt;
+        }
+
+        // Add event listeners for real-time prompt generation
+        goalInput.addEventListener('input', generatePrompt);
+        toneSelect.addEventListener('change', generatePrompt);
+        roleSelect.addEventListener('change', generatePrompt);
+        styleSelect.addEventListener('change', generatePrompt);
+        aspectRatio.addEventListener('change', generatePrompt);
+        negativePrompt.addEventListener('input', generatePrompt);
+
+        // Copy functionality
+        const copyButton = document.getElementById('copyButton');
+        const copyText = document.getElementById('copyText');
+
+        copyButton.addEventListener('click', async () => {
+            const prompt = outputPrompt.value;
+            if (!prompt) return;
+
+            try {
+                await navigator.clipboard.writeText(prompt);
+                copyText.innerHTML = '<span>✅</span><span>Copied!</span>';
+                copyButton.classList.add('copy-success', 'glow');
+                
+                setTimeout(() => {
+                    copyText.innerHTML = '<span>📋</span><span>Copy Prompt</span>';
+                    copyButton.classList.remove('copy-success', 'glow');
+                }, 2000);
+            } catch (err) {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = prompt;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                copyText.innerHTML = '<span>✅</span><span>Copied!</span>';
+                copyButton.classList.add('copy-success', 'glow');
+                setTimeout(() => {
+                    copyText.innerHTML = '<span>📋</span><span>Copy Prompt</span>';
+                    copyButton.classList.remove('copy-success', 'glow');
+                }, 2000);
+            }
+        });
+
+        // Clear functionality
+        const clearButton = document.getElementById('clearButton');
+
+        clearButton.addEventListener('click', () => {
+            goalInput.value = '';
+            outputPrompt.value = '';
+            negativePrompt.value = '';
+            
+            // Reset selectors to default values
+            toneSelect.selectedIndex = 0;
+            roleSelect.selectedIndex = 0;
+            styleSelect.selectedIndex = 0;
+            aspectRatio.selectedIndex = 0;
+            
+            // Reset to LLM model
+            document.querySelector('input[name="aiModel"][value="llm"]').checked = true;
+            toggleModelOptions();
+            
+            goalInput.focus();
+        });
+
+        // Initialize the app
+        toggleModelOptions();
+        goalInput.focus();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98d4e558549b8584',t:'MTc2MDI1NDI2OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
